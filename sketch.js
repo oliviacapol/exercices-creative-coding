@@ -7,7 +7,7 @@ let c;
 let angle = 0;
 
 function setup() {
-  createCanvas(1000, 1000);
+  createCanvas(windowWidth, windowHeight);
   noStroke();
   colorMode(RGB);
 
