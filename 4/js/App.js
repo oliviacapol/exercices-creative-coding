@@ -1,0 +1,72 @@
+// PAS TOUCHER
+class App {
+  constructor() {
+    this.pixelRatio = window.devicePixelRatio || 1;
+    this.canvas = document.createElement("canvas");
+    this.canvas.width = window.innerWidth * this.pixelRatio;
+    this.canvas.height = window.innerHeight * this.pixelRatio;
+    this.canvas.style.width = window.innerWidth;
+    this.canvas.style.height = window.innerHeight;
+    document.body.appendChild(this.canvas);
+    this.ctx = this.canvas.getContext("2d");
+    this.setup();
+  }
+
+  setup() {
+    this.mouse = { x: 0, y: 0 };
+    const center = {
+      x: (window.innerWidth / 2) * this.pixelRatio,
+      y: (window.innerHeight / 2) * this.pixelRatio,
+    };
+
+    this.circle = new Circle(center.x, center.y, 0, this.ctx);
+
+    this.eyeone = new Eye(center.x - 200, center.y, 100, this.ctx);
+
+    this.eyetwo = new Eye(center.x + 200, center.y, 100, this.ctx);
+
+    this.bouche = new Bouche(center.x, center.y, 0, this.ctx);
+
+    this.fleur = new Fleur(center.x, center.y, 50, this.ctx);
+
+    document.addEventListener("mousemove", this.move.bind(this));
+    document.addEventListener("click", this.click.bind(this));
+
+    this.draw();
+  }
+
+  click(e) {
+    this.bouche.resetAndGo();
+    this.fleur.resetAndGo();
+  }
+
+  draw() {
+    this.ctx.fillStyle = "white";
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+    this.circle.draw();
+    this.eyeone.draw(this.mouse.x, this.mouse.y);
+    this.eyetwo.draw(this.mouse.x, this.mouse.y);
+    this.bouche.draw();
+
+    // this.ctx.rotate(this.mouse.x);
+    this.fleur.draw();
+
+    requestAnimationFrame(this.draw.bind(this));
+  }
+
+  move(e) {
+    this.mouse = {
+      x: e.clientX * this.pixelRatio,
+      y: e.clientY * this.pixelRatio,
+    };
+  }
+
+  dist(x1, y1, x2, y2) {
+    return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+  }
+}
+
+window.onload = function () {
+  new App();
+};
