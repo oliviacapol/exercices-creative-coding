@@ -111,7 +111,7 @@ class Fleur {
 
   scale() {
     this.t += this.speed;
-    const ease = Easing.bounceOut(this.t);
+    const ease = Easing.circInOut(this.t);
 
     this.radius = Math.abs(
       this.originRadius + (this.targetRadius - this.originRadius) * ease
