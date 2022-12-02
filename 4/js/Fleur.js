@@ -3,9 +3,6 @@ class Fleur {
     this.position = { x: x, y: y };
     this.originRadius = radius;
     this.targetRadius = radius;
-    this.hue = Math.round(Math.random() * 360);
-    this.originHue = this.hue;
-    this.targetHue = this.hue;
     this.radius = radius;
     this.ctx = ctx;
     this.speed = 0.01;
@@ -105,18 +102,15 @@ class Fleur {
     } else {
       this.targetRadius = 40;
     }
-    this.originHue = this.hue;
-    this.targetHue = this.hue + 40;
   }
 
   scale() {
     this.t += this.speed;
-    const ease = Easing.circInOut(this.t);
+    const ease = Easing.quartInOut(this.t);
 
     this.radius = Math.abs(
       this.originRadius + (this.targetRadius - this.originRadius) * ease
     );
-    this.hue = this.originHue + (this.targetHue - this.originHue) * ease;
   }
 
   /**
