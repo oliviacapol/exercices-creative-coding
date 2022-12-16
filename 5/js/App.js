@@ -66,7 +66,6 @@ class App {
           )
         );
 
-        // this.sequence = "0,1".split("");
         this.sequence = "01";
       }
     }
@@ -113,7 +112,7 @@ class App {
       const color = this.rgb[index];
       letter.color = `rgba(0,${color.g},0,0.5)`;
       const unique_letter = this.sequence[Math.floor(Math.random() * 2)];
-      // const unique_letter = this.sequence.shift();
+
       letter.letter = unique_letter;
       letter.draw();
     });

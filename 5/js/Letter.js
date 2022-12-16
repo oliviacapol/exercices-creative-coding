@@ -16,7 +16,6 @@ class Letter {
       this.ctx.fillStyle = this.replacement_color;
       this.ctx.save();
       this.ctx.translate(this.x, this.y);
-      // draw letter x
       this.ctx.font = `${
         this.radius * luminosity_percentage * 2.5
       }px sans-serif`;
@@ -49,17 +48,13 @@ class Letter {
 
     const gradient = this.ctx.createLinearGradient(20, 0, 220, 0);
 
-    // Add three color stops
     gradient.addColorStop(0, "blue");
     gradient.addColorStop(0.3, "red");
     gradient.addColorStop(1, "blue");
 
     this.ctx.save();
     this.ctx.translate(this.x, this.y);
-
-    // Set the fill style and draw a rectangle
     this.ctx.fillStyle = gradient;
-
     this.ctx.fillRect(
       0,
       0,
@@ -67,14 +62,6 @@ class Letter {
       luminosity_percentage * 100
     );
     this.ctx.restore();
-
-    // // this.ctx.fillStyle = "#00E120";
-    // this.ctx.fillStyle = "red";
-    // this.ctx.save();
-    // this.ctx.translate(this.x, this.y);
-    // this.ctx.font = `${this.radius * luminosity_percentage * 3}px sans-serif`;
-    // this.ctx.fillText(this.letter, 0, 0);
-    // this.ctx.restore();
   }
 
   actionmedium() {
@@ -85,7 +72,6 @@ class Letter {
     this.ctx.translate(this.x, this.y);
     this.ctx.font = `${this.radius * luminosity_percentage * 4}px sans-serif`;
     this.ctx.fillText(this.letter, 0, 0);
-
     this.ctx.restore();
   }
 
@@ -93,18 +79,8 @@ class Letter {
     const luminosity_percentage = this.detectLuminance();
 
     this.ctx.fillStyle = "black";
-
-    // this.ctx.save();
-    // this.ctx.translate(this.x, this.y);
-
-    // this.ctx.beginPath();
-    // this.ctx.moveTo(0, 0);
-    // this.ctx.lineTo(luminosity_percentage / 2, luminosity_percentage / 2);
-    // this.ctx.stroke();
-
     this.ctx.save();
     this.ctx.translate(this.x, this.y);
-    // draw letter x
     this.ctx.font = `${this.radius * luminosity_percentage * 2.5}px sans-serif`;
     this.ctx.fillText(this.letter, 0, 0);
     this.ctx.closePath();
