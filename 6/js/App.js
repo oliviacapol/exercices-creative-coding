@@ -18,8 +18,8 @@ class App {
 
     this.totalLines = 50;
     this.subdivisions = 50;
-
     const grid_width = 20 * 50;
+
     const top_left = {
       x: (window.innerWidth / 2) * this.pixelRatio - grid_width / 2,
       y: (window.innerHeight / 2) * this.pixelRatio - grid_width / 2,
@@ -74,16 +74,16 @@ class App {
       for (let j = 0; j < this.subdivisions - 1; j++) {
         const index = i * this.subdivisions + j;
         if (j == 0) {
-          this.ctx.moveTo(this.grid[index].x, this.grid[index].y + this);
+          this.ctx.moveTo(this.grid[index].x, this.grid[index].y);
         }
 
         this.ctx.lineTo(this.grid[index + 1].x, this.grid[index + 1].y);
       }
 
-      // this.ctx.globalCompositeO  peration = "destination-out";
       this.ctx.stroke();
       this.ctx.closePath();
     }
+
     this.run++;
 
     requestAnimationFrame(this.draw.bind(this));
