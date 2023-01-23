@@ -17,6 +17,7 @@ class Circle {
     this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI);
     this.ctx.fill();
     this.ctx.closePath();
+
     this.ctx.restore();
 
     this.y += luminosity_percentage * 0.01;
